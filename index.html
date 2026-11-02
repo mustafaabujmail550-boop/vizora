@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VIZORA | Design & Creative Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--night:#062526;--teal:#0A3536;--deep:#0E4D4F;--gold:#E8A21A;--lgold:#F8C887;--ivory:#F5F2EC;--mute:#9FB5B3;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--night);color:var(--ivory);font-family:Poppins,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0;line-height:1.1}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#personal{display:none}
+body.pv #site{display:none}
+body.pv #personal{display:block}
+.pback{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(6,37,38,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,162,26,.2)}
+.pback .wrap{height:58px;display:flex;align-items:center}
+.pback a{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:999px;border:1.5px solid var(--gold);color:var(--ivory);text-decoration:none;font-weight:600;font-size:14px}
+.pback a:hover{background:var(--gold);color:#2a1a00}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(6,37,38,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,162,26,.15)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-family:'Playfair Display',serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-decoration:none;color:var(--ivory)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px}
+nav ul a{text-decoration:none;color:var(--mute)}
+nav ul a:hover{color:var(--gold)}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn.gold{background:linear-gradient(135deg,var(--lgold),var(--gold));color:#2a1a00;box-shadow:0 8px 28px rgba(232,162,26,.28)}
+.btn.line{border:1.5px solid rgba(245,242,236,.35)}
+.btn:hover{transform:translateY(-2px)}
+.btn.line:hover{border-color:var(--gold);color:var(--gold)}
+.hero{position:relative;padding:70px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:760px;height:760px;right:-180px;top:-120px;background:radial-gradient(circle,rgba(232,162,26,.30),rgba(232,162,26,0) 62%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:620px;height:620px;left:-260px;bottom:-300px;background:radial-gradient(circle,rgba(14,77,79,.9),rgba(14,77,79,0) 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,8vw,92px);font-weight:800}
+.hero h1 em{display:block;font-style:italic;font-weight:500;color:var(--gold)}
+.hero p{max-width:470px;color:#cfdcda;font-size:17px;margin:22px 0 32px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.logo{justify-self:center;width:min(100%,430px);aspect-ratio:1;border-radius:50%;background:#F1EEE8;overflow:hidden;box-shadow:0 0 0 10px rgba(232,162,26,.12),0 0 0 11px rgba(232,162,26,.5),0 30px 90px rgba(232,162,26,.25);animation:float 7s ease-in-out infinite}
+.logo img{width:100%;height:100%;display:block;object-fit:cover}
+@keyframes float{50%{transform:translateY(-12px)}}
+section{padding:84px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+h2{font-size:clamp(34px,5vw,54px);font-weight:600}
+.head p{margin:8px 0 0;color:var(--mute);max-width:420px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:500 13.5px Poppins,sans-serif;color:var(--ivory);background:transparent;border:1px solid rgba(245,242,236,.22);padding:8px 18px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--gold);color:#2a1a00;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.work{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:var(--teal);border:1px solid rgba(232,162,26,.14);display:flex;align-items:flex-end;padding:20px;transition:transform .3s,border-color .3s}
+.work:hover{transform:translateY(-6px);border-color:rgba(232,162,26,.6)}
+.work.hide{display:none}
+.work .art{position:absolute;inset:0}
+.work div.t{position:relative;z-index:1;background:linear-gradient(0deg,rgba(6,37,38,.92),rgba(6,37,38,0));margin:-20px;padding:60px 20px 20px;width:calc(100% + 40px)}
+.work h3{font-size:22px;font-weight:600}
+.work span{color:var(--lgold);font-size:13px}
+.a1{background:radial-gradient(circle at 70% 30%,#E8A21A 0 18%,transparent 19%),radial-gradient(circle at 30% 70%,#0E4D4F 0 30%,transparent 31%),#0A3536}
+.a2{background:linear-gradient(160deg,#0E4D4F 0 55%,#E8A21A 55% 57%,#0A3536 57%)}
+.a3{background:repeating-linear-gradient(115deg,#0A3536 0 26px,#0E4D4F 26px 52px)}
+.a3::after{content:"";position:absolute;width:55%;aspect-ratio:1;left:22%;top:18%;border:6px solid #E8A21A;border-radius:50%}
+.a4{background:radial-gradient(circle at 50% 38%,#F8C887 0 14%,#E8A21A 15% 24%,transparent 25%),linear-gradient(#0E4D4F,#062526)}
+.a5{background:conic-gradient(from 200deg at 30% 70%,#E8A21A,#0E4D4F 35%,#0A3536 70%,#E8A21A)}
+.a6{background:linear-gradient(#F5F2EC 0 38%,#0A3536 38%);}
+.a6::after{content:"Aa";position:absolute;left:22px;top:26px;font:800 74px 'Playfair Display',serif;color:#0E4D4F}
+.proj{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{display:block;text-decoration:none;border-radius:24px;overflow:hidden;background:var(--teal);border:1px solid rgba(232,162,26,.18);transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-6px);border-color:var(--gold)}
+.pa{height:260px;display:grid;place-items:center;position:relative}
+.pa span{font:800 clamp(38px,6vw,58px) 'Playfair Display',serif;position:relative;z-index:1;direction:rtl}
+.pa1{background:radial-gradient(circle at 78% 22%,rgba(248,200,135,.35),transparent 40%),linear-gradient(135deg,#0E4D4F,#062526)}
+.pa2{background:radial-gradient(circle at 22% 78%,rgba(232,162,26,.45),transparent 45%),linear-gradient(135deg,#0A3536,#0E4D4F)}
+.pa::after{content:"";position:absolute;width:210px;height:210px;border:2px solid rgba(232,162,26,.55);border-radius:50%}
+.pa .lg{width:190px;height:190px;border-radius:50%;position:relative;z-index:1;display:block;box-shadow:0 0 0 3px rgba(232,162,26,.55),0 16px 40px rgba(0,0,0,.4)}.pa1::after,.pa2::after{display:none}
+.pb{padding:24px 26px 28px}
+.pb h3{font-size:26px}
+.pb p{color:#cfdcda;font-size:15px;margin:10px 0 18px}
+.go{color:var(--gold);font-weight:600;font-size:15px;border-bottom:1.5px solid var(--gold)}
+@media(max-width:820px){.proj{grid-template-columns:1fr}}
+.wide{grid-column:1/-1}
+.ba{display:grid;grid-template-columns:1fr;gap:6px;max-width:340px;margin:0 auto;background:var(--night)}
+.ba figure{margin:0;position:relative}
+.ba img{display:block;width:100%;height:auto}
+.ba figcaption{position:absolute;left:14px;top:14px;background:rgba(6,37,38,.82);color:var(--lgold);font-size:13px;font-weight:500;padding:5px 14px;border-radius:999px;border:1px solid rgba(232,162,26,.4)}
+.feat{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:40px;padding:30px 36px}
+.feat .shot img{display:block;width:290px;max-width:100%;height:auto;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.feat .pb{padding:0}.feat .pb h3{font-size:clamp(28px,4vw,40px)}.feat .pb p{font-size:16px;max-width:520px}
+@media(max-width:820px){.feat{grid-template-columns:1fr;gap:24px;padding:24px}.feat .shot{text-align:center}}
+.about{background:linear-gradient(180deg,var(--night),var(--teal))}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about p{color:#cfdcda;font-size:17px;margin:18px 0 0}
+.svc{display:grid;gap:14px}
+.svc div{padding:22px 24px;border-radius:18px;background:rgba(14,77,79,.45);border-left:3px solid var(--gold)}
+.svc h3{font-size:21px;margin-bottom:4px}
+.svc p{margin:0;font-size:15px;color:var(--mute)}
+.contact{text-align:center}
+.contact .box{padding:64px 24px;border-radius:32px;background:radial-gradient(circle at 50% 0,rgba(232,162,26,.22),transparent 60%),var(--teal);border:1px solid rgba(232,162,26,.3)}
+.contact h2{font-size:clamp(36px,6vw,64px)}
+.contact h2 em{font-style:italic;font-weight:500;color:var(--gold)}
+.contact p{color:#cfdcda;margin:14px auto 30px;max-width:460px}
+.contact .cta{justify-content:center}
+.num{display:block;margin-top:22px;color:var(--mute);font-size:14px;direction:ltr}
+footer{padding:28px 0 40px;text-align:center;color:var(--mute);font-size:13px}
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 26px rgba(0,0,0,.45)}
+.wa svg{width:30px;height:30px;fill:#fff}
+@media(max-width:820px){nav ul{display:none}.hero .wrap,.about .wrap{grid-template-columns:1fr}.logo{order:-1;width:min(78%,320px)}.grid{grid-template-columns:repeat(2,1fr)}section{padding:62px 0}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.work{aspect-ratio:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="site">
+<nav><div class="wrap"><a class="brand" href="#top">VIZORA</a>
+<ul><li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#personal">About me</a></li><li><a href="#contact">Contact</a></li></ul>
+<a class="btn gold" style="padding:9px 20px;font-size:14px" href="https://wa.me/962785458903" target="_blank" rel="noopener">WhatsApp</a></div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+<div><h1>Design. Ideas.<em>Elevated.</em></h1>
+<p>VIZORA is a design and creative studio. I turn ideas into branding, social media and visuals that look sharp and feel right.</p>
+<div class="cta"><a class="btn gold" href="#work">See my work</a><a class="btn line" href="https://wa.me/962785458903" target="_blank" rel="noopener">Start a project</a><a class="btn line" href="#personal">Meet the designer</a></div></div>
+<div class="logo"><img src="vizora-logo.jpg" alt="VIZORA logo: a pen nib and a light bulb joined by a gold ribbon inside a circle"></div>
+</div></header>
+
+<section id="work"><div class="wrap">
+<div class="head"><div><h2>Selected work</h2><p>Store designs, websites and photo edits.</p></div></div>
+<div class="proj">
+<div class="card wide feat"><div class="shot"><img src="wasilcom-store.jpg" alt="Mobile design of the Wasilcom online marketplace: home screen with search, filters and bottom navigation"></div>
+<div class="pb"><h3>Wasilcom Online Store</h3><p>A mobile-first design for an online marketplace in Jordan, bringing home-cooked food, local products, service providers and home maintenance into one place. Green and white palette, full Arabic right-to-left layout, search with city filter and easy bottom navigation.</p></div></div>
+<a class="card" href="https://mustafaabujmail550-boop.github.io/elia-hut/" target="_blank" rel="noopener">
+<div class="pa pa1"><img class="lg" src="elia-hut-logo.jpg" alt="Eliaa’s Hut logo: a green coffee bean with a small white hut"></div>
+<div class="pb"><h3>Eliaa’s Hut</h3><p>A cozy menu website for a coffee and bakery spot in Jabal Al-Weibdeh. Bilingual dishes with prices, location map, WhatsApp delivery and Instagram.</p><span class="go">Visit website</span></div></a>
+<a class="card" href="https://mustafaabujmail550-boop.github.io/harta.mune/" target="_blank" rel="noopener">
+<div class="pa pa2"><img class="lg" src="harta-logo.jpg" alt="Harta Restaurant logo"></div>
+<div class="pb"><h3>Harta Restaurant</h3><p>A landing page for a traditional Jordanian restaurant. Logo, heritage story, phone ordering and both branch locations.</p><span class="go">Visit website</span></div></a>
+<div class="card wide"><div class="ba">
+<figure><img src="photo-before.jpg" alt="Original photo of a child sitting on a plain lawn"><figcaption>Before</figcaption></figure>
+<figure><img src="photo-after.jpg" alt="Edited photo with a field of daisies and a large number 10 added"><figcaption>After</figcaption></figure></div>
+<div class="pb"><h3>Photo editing</h3><p>Retouching and compositing. A plain lawn photo turned into a birthday scene with a daisy field and a number prop, with color matched to the original light.</p></div></div>
+</div></div></section>
+
+<section class="about" id="about"><div class="wrap">
+<div><h2>Where ideas take shape</h2>
+<p>Every project starts with one bright idea. I shape it with craft, clear thinking and a sharp eye for detail, so your brand looks the way it feels.</p>
+<p>Follow VIZORA on Instagram for design tips, honest makeovers and daily inspiration.</p></div>
+<div class="svc">
+<div><h3>Online stores and websites</h3><p>Clean, fast pages for restaurants, cafes and small businesses.</p></div>
+<div><h3>Logo and branding</h3><p>Marks, colors and type that make you easy to remember.</p></div>
+<div><h3>Social media design</h3><p>Posts, carousels and stories with one consistent look.</p></div>
+<div><h3>Photo editing</h3><p>Retouching and creative compositing for portraits and events.</p></div>
+<div><h3>Posters and print</h3><p>Bold layouts for events, offers and campaigns.</p></div>
+</div></div></section>
+
+<section class="contact" id="contact"><div class="wrap"><div class="box">
+<h2>Have an idea?<br><em>Let’s shape it.</em></h2>
+<p>Send me a message on WhatsApp and tell me about your project.</p>
+<div class="cta"><a class="btn gold" href="https://wa.me/962785458903" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<a class="btn line" href="https://www.instagram.com/vizora_5m" target="_blank" rel="noopener">@vizora_5m on Instagram</a></div>
+<span class="num">WhatsApp: 0785458903</span>
+</div></div></section>
+
+<footer>© 2026 VIZORA | Design & Creative Studio</footer>
+
+<a class="wa" href="https://wa.me/962785458903" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-2c1.8 1 3.800 1.500 5.600 1.500C23 28.500 28.600 22.900 28.600 16S23 3 16 3zm0 23.400c-1.800 0-3.500-.5-5-1.400l-.4-.2-4.400 1.200 1.200-4.300-.3-.4a10.400 10.400 0 1 1 8.900 5.100zm5.700-7.800c-.3-.2-1.800-.9-2.100-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.300-.5-2.500-1.500-.9-.8-1.500-1.800-1.700-2.100-.2-.3 0-.5.100-.6l.5-.5c.1-.2.200-.3.300-.5.100-.2 0-.4 0-.5-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400-.3.300-1.100 1.100-1.100 2.600s1.100 3 1.300 3.200c.2.200 2.200 3.400 5.400 4.700.8.300 1.400.5 1.800.6.800.2 1.500.2 2 .1.600-.1 1.800-.7 2-1.400.3-.7.300-1.300.2-1.400-.1-.1-.3-.2-.6-.3z"/></svg></a>
+
+</div>
+<div id="personal"><div class="pback"><div class="wrap"><a href="#top">← Back to VIZORA</a></div></div><div id="pshadow"></div></div>
+<template id="ptpl"><style>
+:host{display:block;--night:#0A3536;--teal:#0E4D4F;--gold:#E8A21A;--lgold:#F8C887;--ivory:#F5F2EC;--char:#1E2A2B;color-scheme:dark;box-sizing:border-box;}
+*,*::before,*::after{box-sizing:inherit}
+
+.shell{margin:0;background:radial-gradient(1200px 700px at 85% -10%,#12666a55,transparent 60%),var(--night);color:var(--ivory);font-family:Poppins,system-ui,sans-serif;line-height:1.8}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+.brand{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.06em;direction:ltr}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+nav .links{display:flex;gap:22px;font-weight:600;font-size:15px}
+nav .links a:hover{color:var(--gold)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:36px 0 64px}
+.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.25;margin:0 0 14px;font-weight:800}
+.hero h1 span{display:block;color:var(--gold)}
+.hero p{max-width:34em;color:#e6e2d8;margin:0 0 26px;font-size:18px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 26px;border-radius:999px;font-weight:700;border:2px solid var(--gold)}
+.btn.main{background:var(--gold);color:var(--char)}
+.btn.main:hover{background:var(--lgold)}
+.btn.alt:hover{background:#E8A21A22}
+.portrait{justify-self:center;position:relative;width:min(100%,380px);aspect-ratio:1}
+.portrait img{width:100%;height:100%;border-radius:50%;display:block;border:4px solid var(--gold);box-shadow:0 0 0 12px #E8A21A1f,0 30px 80px #0007}
+.portrait::after{content:"";position:absolute;inset:-22px;border-radius:50%;border:2px solid #F8C88766;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(-20deg)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid #E8A21A55;margin-bottom:72px}
+.stat{padding:30px 10px;text-align:center}
+.stat+.stat{border-inline-start:1px solid #E8A21A33}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:clamp(44px,8vw,80px);line-height:1.1;color:var(--gold);direction:ltr}
+.stat small{font-size:17px;color:#e6e2d8}
+h2{font-size:clamp(26px,4vw,38px);margin:0 0 8px;font-weight:800}
+.sub{color:#cfd8d4;margin:0 0 28px}
+section{margin-bottom:72px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.svc{padding:22px;border-radius:18px;background:#0E4D4F88;border:1px solid #E8A21A33}
+.svc h3{margin:0 0 4px;color:var(--lgold);font-size:19px}
+.svc p{margin:0;font-size:15px;color:#dfe6e2}
+.work{display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:22px;border-radius:18px;background:linear-gradient(150deg,var(--teal),#082a2b);border:1px solid #E8A21A44;transition:transform .2s,border-color .2s}
+.work:hover{transform:translateY(-4px);border-color:var(--gold)}
+.work.first{grid-column:1/-1;min-height:150px;background:linear-gradient(150deg,#E8A21A,#b97a0c);color:var(--char);border:0}
+.work h3{margin:0;font-size:22px}
+.work p{margin:4px 0 0;font-size:15px;opacity:.9}
+.work span{font-weight:700;font-size:14px;color:var(--gold)}
+.work.first span{color:var(--char)}
+.contact{text-align:center;padding:48px 22px;border-radius:28px;background:var(--ivory);color:var(--char)}
+.contact h2{color:var(--teal)}
+.contact .btn.main{background:var(--teal);color:var(--ivory);border-color:var(--teal)}
+.contact .btn.alt{color:var(--teal);border-color:var(--teal)}
+.contact img{width:84px;height:84px;border-radius:50%;margin-bottom:10px}
+footer{text-align:center;padding:28px 0 36px;color:#9fb5b2;font-size:14px}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.btns{justify-content:center}.portrait{order:-1;width:min(70%,280px)}nav .links{gap:14px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){.rise{animation:none}html{scroll-behavior:auto}}
+.pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}.pg{padding:0;border:1px solid #E8A21A55;border-radius:12px;overflow:hidden;background:none;cursor:zoom-in}.pg img{width:100%;height:auto;display:block}.pg:hover{border-color:var(--gold)}dialog{border:0;background:#000d;padding:16px;max-width:100vw;max-height:100vh;width:100%;height:100%}dialog[open]{display:flex;justify-content:center;align-items:center}dialog img{max-width:100%;max-height:100%;object-fit:contain}#x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:16px;font-size:34px;line-height:1;background:var(--gold);border:0;border-radius:50%;width:44px;height:44px;cursor:pointer}section,header{scroll-margin-top:72px}</style><div class="shell"><div class="wrap">
+<nav><a class="brand" href="#top">VIZORA</a><div class="links"><a href="#works">Work</a><a href="#services">Services</a><a href="#guide">Brand guide</a><a href="#contact">Contact</a></div></nav>
+<header class="hero rise" id="top">
+<div>
+<h1>I turn ideas into design<span>people remember</span></h1>
+<p>Graphic designer building brand identities, social media designs and online store interfaces, with a clean, elegant style that reflects your project.</p>
+<div class="btns"><a class="btn main" href="#works">See my work</a><a class="btn alt" href="#contact">Start a project</a></div>
+</div>
+<div class="portrait"><img src="personal-portrait.jpg" alt="Portrait of the designer" width="380" height="380"></div>
+</header>
+<div class="stats" aria-label="Highlights">
+<div class="stat"><b data-to="1">1</b><small>full year of experience</small></div>
+<div class="stat"><b><span data-to="40">40</span>+</b><small>projects delivered</small></div>
+<div class="stat"><b data-to="17">17</b><small>happy clients</small></div>
+</div>
+<section id="services">
+<h2>What I offer</h2><p class="sub">Every service handled end to end, from idea to delivery.</p>
+<div class="grid">
+<div class="svc"><h3>Brand identity</h3><p>Logo, colors and type that make your brand recognizable at first glance.</p></div>
+<div class="svc"><h3>Social media design</h3><p>Posts, carousels and highlight covers with one consistent look.</p></div>
+<div class="svc"><h3>Online store interfaces</h3><p>Easy-to-use mobile interfaces built to help sales.</p></div>
+<div class="svc"><h3>Photo editing</h3><p>Professional retouching, cleanup and color correction.</p></div>
+</div>
+</section>
+<section id="works">
+<h2>Selected work</h2><p class="sub">A selection from more than 40 projects.</p>
+<div class="grid">
+<div class="work first"><div><h3>Wasil (Wasilcom)</h3><p>Mobile interface design for an online store and marketplace.</p></div><span>Online store design</span></div>
+<a class="work" href="https://mustafaabujmail550-boop.github.io/elia-hut/" target="_blank" rel="noopener"><div><h3>Elia Hut</h3><p>Showcase website for a holiday cabin.</p></div><span>Open site</span></a>
+<a class="work" href="https://mustafaabujmail550-boop.github.io/harta.mune/" target="_blank" rel="noopener"><div><h3>Harta Restaurant</h3><p>Website and menu for a restaurant.</p></div><span>Open site</span></a>
+</div>
+</section>
+<section id="guide"><h2>Brand Identity Guide</h2><p class="sub">The complete VIZORA guide, all 8 pages. Tap a page to enlarge.</p><div class="pages"><button class="pg" data-i="0" aria-label="Open page 1"><img loading="lazy" src="guide-1.jpg" alt="VIZORA Brand Identity Guide, page 1" width="500" height="707"></button><button class="pg" data-i="1" aria-label="Open page 2"><img loading="lazy" src="guide-2.jpg" alt="VIZORA Brand Identity Guide, page 2" width="500" height="707"></button><button class="pg" data-i="2" aria-label="Open page 3"><img loading="lazy" src="guide-3.jpg" alt="VIZORA Brand Identity Guide, page 3" width="500" height="707"></button><button class="pg" data-i="3" aria-label="Open page 4"><img loading="lazy" src="guide-4.jpg" alt="VIZORA Brand Identity Guide, page 4" width="500" height="707"></button><button class="pg" data-i="4" aria-label="Open page 5"><img loading="lazy" src="guide-5.jpg" alt="VIZORA Brand Identity Guide, page 5" width="500" height="707"></button><button class="pg" data-i="5" aria-label="Open page 6"><img loading="lazy" src="guide-6.jpg" alt="VIZORA Brand Identity Guide, page 6" width="500" height="707"></button><button class="pg" data-i="6" aria-label="Open page 7"><img loading="lazy" src="guide-7.jpg" alt="VIZORA Brand Identity Guide, page 7" width="500" height="707"></button><button class="pg" data-i="7" aria-label="Open page 8"><img loading="lazy" src="guide-8.jpg" alt="VIZORA Brand Identity Guide, page 8" width="500" height="707"></button></div></section><dialog id="dlg"><img id="big" alt=""><button id="x" aria-label="Close">×</button></dialog><section id="contact">
+<div class="contact">
+<img src="personal-logo.jpg" alt="VIZORA logo" width="84" height="84">
+<h2>Got an idea? Let’s shape it</h2>
+<p class="sub" style="color:#4b5a5b">Message me and we’ll get started.</p>
+<div class="btns" style="justify-content:center"><a class="btn main" href="https://wa.me/964785458903" target="_blank" rel="noopener">WhatsApp</a><a class="btn alt" href="https://www.instagram.com/vizora_5m" target="_blank" rel="noopener">Instagram @vizora_5m</a></div>
+</div>
+</section>
+<footer><span class="brand">VIZORA</span> · Design. Ideas. Elevated.</footer>
+</div></div></template>
+<script>
+document.querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){
+document.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b)});
+var f=b.dataset.f;document.querySelectorAll('.work').forEach(function(w){w.classList.toggle('hide',f!=='all'&&w.dataset.c!==f)});});});
+</script>
+<script>
+(function(){
+var T=document.getElementById('ptpl'),H=document.getElementById('pshadow'),R=null,was=false;
+function init(){if(R)return;R=H.attachShadow({mode:'open'});R.appendChild(T.content.cloneNode(true));
+R.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();
+var id=a.getAttribute('href').slice(1),t=id&&id!=='top'?R.getElementById(id):null;
+if(t)t.scrollIntoView({behavior:'smooth',block:'start'});else window.scrollTo({top:0,behavior:'smooth'});});
+var d=R.getElementById('dlg'),b=R.getElementById('big');
+R.querySelectorAll('.pg').forEach(function(p){p.onclick=function(){b.src=p.firstElementChild.src;d.showModal();};});
+R.getElementById('x').onclick=function(){d.close();};
+d.onclick=function(e){if(e.target===d)d.close();};}
+function counters(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+R.querySelectorAll('[data-to]').forEach(function(e){var t=+e.dataset.to;if(t<2)return;e.textContent='0';var s=null;
+function f(n){if(!s)s=n;var p=Math.min((n-s)/1400,1);e.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f);}
+requestAnimationFrame(f);});}
+function route(){var p=location.hash==='#personal';document.body.classList.toggle('pv',p);
+if(p){init();counters();window.scrollTo(0,0);}
+else if(was){var el=location.hash.length>1?document.getElementById(location.hash.slice(1)):null;if(el)el.scrollIntoView();else window.scrollTo(0,0);}
+was=p;}
+addEventListener('hashchange',route);route();
+})();
+</script>
+</body>
+</html>
